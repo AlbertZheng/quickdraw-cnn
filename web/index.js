@@ -204,7 +204,6 @@ function performPrediction() {
     });
 
     let topK = (indices.length > demoTopK ? demoTopK : indices.length);
-    //let predictionText = 'AI猜你画的是：<b><p style="margin:0;text-align:left;">';
     let predictionText = '';
     for (let i = 0; i < topK; i++) {
       let index = indices[i];
@@ -225,7 +224,6 @@ function performPrediction() {
       if (i < demoTopK - 1)
         predictionText += ' > ';
     }
-    //predictionText += '</p></b>';
 
     document.getElementById('prediction-result').innerHTML = predictionText;
   }
