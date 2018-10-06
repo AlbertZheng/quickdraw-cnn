@@ -10,9 +10,9 @@ This project utilizes [Google's "The Quick Draw" dataset](https://github.com/goo
 ## Technical details
 
 ### Technical stack
-- Server side: ```TensorFlow + TensorLayer + Python```
-- Client side: ```TensorFlow.js + ES6```
-- Model UT: ```TensorFlow.js + Node.js```
+- Server side: **```TensorFlow + TensorLayer + Python```**
+- Client side: **```TensorFlow.js + ES6```**
+- Model UT: **```TensorFlow.js + Node.js```**
 
 
 ### Codes style
@@ -26,4 +26,4 @@ Codes style of this MVP:
 
 ## Live demo
 
-In order to play the live demo [https://ai.kyletiger.com/quickdraw-cnn](https://ai.kyletiger.com/quickdraw-cnn), you need a modern web browser (e.g. ```Chrome```, ```Safari```, or ```Wechat``` on both web and mobile devices) that supports ES6 runtime. IE (or IE kernel based browsers) isn't supported!
+To play the live demo [https://ai.kyletiger.com/quickdraw-cnn](https://ai.kyletiger.com/quickdraw-cnn), you need to use a modern web browser (e.g. **```Chrome```, ```Safari```, or ```Wechat``` on either web or mobile devices**) that supports ES6 runtime. **IE (or IE kernel based browsers) isn't supported!**
