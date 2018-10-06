@@ -102,14 +102,14 @@ header #header-right {
 
 .panel-cell .help-text {
     color: #f8f8f8;
-    margin-top: -0.14rem;
+    /* margin-top: -0.14rem; */
     padding: 0;
     text-align: center;
     color: rgba(255, 255, 255, 1);
 }
 
 .panel-cell #prediction-result {
-    margin: 0;
+    margin: 0.1rem;
 }
 
 .panel-row-top .panel-cell-left {

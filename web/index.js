@@ -7,7 +7,7 @@ let demoTopK = 3;
 let demoMiniCategoryNumber = 10;
 
 
-/* Util to adapt to the screen resolution */
+// Closure to adapt to the screen resolution for both web and mobile
 (function (doc, win) {
   var docEl = doc.documentElement,
       isIOS = navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
@@ -33,6 +33,56 @@ let demoMiniCategoryNumber = 10;
   if (!doc.addEventListener) return;
   win.addEventListener(resizeEvt, recalc, false);
 })(document, window);
+
+
+// Closure refers to https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil#Decimal_adjustment
+(function () {
+  /**
+   * Decimal adjustment of a number.
+   *
+   * @param {String}  type  The type of adjustment.
+   * @param {Number}  value The number.
+   * @param {Integer} exp   The exponent (the 10 logarithm of the adjustment base).
+   * @returns {Number} The adjusted value.
+   */
+  function decimalAdjust(type, value, exp) {
+    // If the exp is undefined or zero...
+    if (typeof exp === 'undefined' || +exp === 0) {
+      return Math[type](value);
+    }
+    value = +value;
+    exp = +exp;
+    // If the value is not a number or the exp is not an integer...
+    if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+      return NaN;
+    }
+    // Shift
+    value = value.toString().split('e');
+    value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+    // Shift back
+    value = value.toString().split('e');
+    return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+  }
+
+  // Decimal round
+  if (!Math.round10) {
+    Math.round10 = function (value, exp) {
+      return decimalAdjust('round', value, exp);
+    };
+  }
+  // Decimal floor
+  if (!Math.floor10) {
+    Math.floor10 = function (value, exp) {
+      return decimalAdjust('floor', value, exp);
+    };
+  }
+  // Decimal ceil
+  if (!Math.ceil10) {
+    Math.ceil10 = function (value, exp) {
+      return decimalAdjust('ceil', value, exp);
+    };
+  }
+})();
 
 
 /**
@@ -158,10 +208,16 @@ function performPrediction() {
     let predictionText = '';
     for (let i = 0; i < topK; i++) {
       let index = indices[i];
+      let p = Math.round10(probabilities[index] * 100, -2);
       predictionText += categoryNames[index];
       predictionText += '<span style="font-size:0.26rem;">';
-      predictionText += (probabilities[index] * 100).toFixed(1);
+      predictionText += p;
       predictionText += '%匹配度</span>';
+
+      // If we get the most perfect matching
+      if (p === 100)
+        break;
+
       if (i < demoTopK - 1)
         predictionText += ' > ';
     }
@@ -190,10 +246,10 @@ function getImageData() {
  * Get the border box
  */
 function getBorderBox() {
-  let coordinateXs = drawingCoordinates.map(function(pointer) {
+  let coordinateXs = drawingCoordinates.map(function (pointer) {
     return pointer.x
   });
-  let coordinateYs = drawingCoordinates.map(function(pointer) {
+  let coordinateYs = drawingCoordinates.map(function (pointer) {
     return pointer.y
   });
 

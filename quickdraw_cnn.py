@@ -241,15 +241,12 @@ def model_batch_normalization(X_batch, y_batch, output_units, reuse, is_train):
         ce = tl.cost.cross_entropy(y_prediction_batch_without_softmax, y_batch, name='cost')
 
         """ 需给后面的全连接层引入L2 normalization，惩罚模型的复杂度，避免overfitting """
-        """
         # L2 for the MLP, without this, the accuracy will be reduced by 15%.
         L2 = 0
         for p in tl.layers.get_variables_with_name('relu/W', True, True):
             L2 += tf.contrib.layers.l2_regularizer(0.004)(p)
         # 加上L2模型复杂度惩罚项后，得到最终真正的cost
         cost = ce + L2
-        """
-        cost = ce
 
         correct_prediction = tf.equal(tf.cast(tf.argmax(y_prediction_batch_without_softmax, 1), y_TF_DTYPE), y_batch)
         # correct_prediction = tf.Print(correct_prediction, [correct_prediction], "correct_prediction: ")
@@ -288,13 +285,14 @@ def save_model():
     model_type = "saved-model"
     latest_model_directory = f'{model_type}-{time.strftime("%Y%m%d%H%M%S", time.localtime())}'
     saved_model_directory = os.path.join(working_directory, latest_model_directory)
-    tf.saved_model.simple_save(session, saved_model_directory,
-                               inputs={"X": X_batch_ph},
-                               outputs={"y_output": y_prediction_})
-    dist_directory = os.path.join(".", model_type)
-    if os.path.exists(dist_directory):
-        os.remove(dist_directory)
-    os.symlink(saved_model_directory, dist_directory, target_is_directory=True)
+    if not os.path.exists(saved_model_directory):
+        tf.saved_model.simple_save(session, saved_model_directory,
+                                   inputs={"X": X_batch_ph},
+                                   outputs={"y_output": y_prediction_})
+        dist_directory = os.path.join(".", model_type)
+        if os.path.exists(dist_directory):
+            os.remove(dist_directory)
+        os.symlink(saved_model_directory, dist_directory, target_is_directory=True)
 
 
 with tf.device('/cpu:0'):
@@ -363,9 +361,9 @@ with tf.device('/cpu:0'):
         saver = tf.train.Saver()
         saver.restore(session, model_ckpt_file_name)
 
-    print("### Train Network parameters ###")
+    print("### Network parameters ###")
     network_.print_params(False)
-    print("### Train Network layers ###")
+    print("### Network layers ###")
     network_.print_layers()
 
     print('   learning_rate: %f' % learning_rate)
@@ -389,7 +387,7 @@ with tf.device('/cpu:0'):
 
         if epoch + 1 == 1 or (epoch + 1) % print_freq == 0:
             print("Epoch %d : Step %d-%d of %d took %fs" %
-                  (epoch, step - n_step_per_epoch, step, n_step, time.time() - start_time))
+                  (epoch + 1, step - n_step_per_epoch, step, n_step, time.time() - start_time))
             print("   train loss: %f" % (sum_loss / sum_batch))
             print("   train accuracy: %f" % (sum_accuracy / sum_batch))
             sum_batch, sum_loss, sum_accuracy = 0, 0, 0
