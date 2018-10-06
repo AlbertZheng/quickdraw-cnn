@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>你画，AI猜</title>
+
+    <link rel="stylesheet" href="./styles.css">
+
+    <!-- jQuery library -->
+    <script src="libs/jquery.min.js"></script>
+
+    <!-- canvas library -->
+    <script src="libs/fabric.min.js"></script>
+
+    <!-- TensorFlow.js library -->
+    <script src="libs/tfjs.js"></script>
+
+    <!-- Entry script -->
+    <script src="./index.js"></script>
+</head>
+
+<body>
+
+<header>
+    <div id="header-left"></div>
+    <div id="header-middle"><b>你画，AI猜</b></div>
+    <i class="icon iconfont icon-eraser" onclick='eraseCanvas()' disabled></i>
+</header>
+
+<!-- Top -->
+<div id="description-container">
+    <p id="poc-info">“你画，AI猜”是一个利用<b style="color:#ef6c00;">深度学习</b>技术识别手绘图形的最小可行产品，技术演示了如何开发类似<b style="color:#ef6c00;">Google “猜画小歌”</b>的<b style="color:#ef6c00;">人工智能</b>Web App。
+    </p>
+    <p id="stack-info">技术栈：<b style="color:#ef6c00;">TensorFlow + TensorLayer + Python, TensorFlow.js + JavaScript + Node.js</b></p>
+</div>
+
+<div class="controller-panels" id="controller">
+    <div class="panel">
+
+        <div class="panel-row panel-row-top">
+            <div class="panel-cell panel-cell-left">
+            </div><!-- ./panel-cell -->
+
+            <div class="panel-cell panel-cell-center panel-cell-fill">
+                <div id="status" class="help-text">
+                    正在加载<b>卷积神经网络模型，请稍候</b>...
+                </div>
+            </div><!-- ./panel-cell -->
+
+            <div class="panel-cell panel-cell-right">
+            </div><!-- ./panel-cell -->
+        </div><!-- /.panel-row -->
+
+        <div class="panel-row panel-row-middle">
+            <div class="panel-cell panel-cell-left">
+            </div><!-- ./panel-cell -->
+
+            <div class="panel-cell panel-cell-center panel-cell-fill">
+                <div class="canvas-box-outer">
+                    <div class="canvas-box-inner">
+                        <canvas width=308 height=308 id="canvas"></canvas>
+                    </div>
+                </div>
+            </div><!-- ./panel-cell -->
+
+            <div class="panel-cell panel-cell-right">
+            </div><!-- ./panel-cell -->
+        </div><!-- /.panel-row -->
+
+        <div class="panel-row panel-row-bottom">
+            <div class="panel-cell panel-cell-left">
+            </div><!-- ./panel-cell -->
+
+            <div class="panel-cell panel-cell-center panel-cell-fill">
+                <div class="help-text">
+                    <p id="prediction-result">AI猜您画的是：</p>
+                </div>
+            </div><!-- ./panel-cell -->
+
+            <div class="panel-cell panel-cell-right">
+            </div><!-- ./panel-cell -->
+        </div><!-- /.panel-row -->
+
+    </div><!-- /.panel -->
+
+</div><!-- /#controller -->
+
+</body>
+
+<script>
+  appMain()
+</script>
+
+</html>
