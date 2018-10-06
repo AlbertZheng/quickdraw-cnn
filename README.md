@@ -2,11 +2,11 @@
 
 ## Project info
 
-A "You draw, AI guess" MVP (Minimum Viable Product) that can recognize the drawing on web using a web friendly CNN model.
+**A "You draw, AI guess" MVP (Minimum Viable Product) that can recognize the drawing on web using a web friendly CNN model.**
 
 This project utilizes [Google's "The Quick Draw" dataset](https://github.com/googlecreativelab/quickdraw-dataset).
  
- The Quick Draw dataset is a collection of **50 million drawings** across **345 categories**, and if training the network model using the full dataset, the needed computation resource of GPU will be very huge for me. So as for demonstrating how to develop a AI enabled Web App by using TensorFlow full stack, I just sampled 10 categories and 20000 pictures per category (i.e. total 200000 pictures) from this dataset to train the CNN model, and achieved 94% accuracy, then published the model as a web friendly model for TensorFlow.js based Web App.
+ The Quick Draw dataset is a collection of **50 million drawings** across **345 categories**, and if training the network model using the full dataset, the needed computation resource of GPU will be very huge for me. So as for demonstrating how to develop a AI enabled Web App by using TensorFlow full stack, I **just sampled 10 categories and 20000 pictures per category (i.e. total 200000 pictures)** from this dataset to train the CNN model, and achieved almost 94% accuracy after training 16 epoch, then published the model as a web friendly model for ```TensorFlow.js``` based Web App.
 
 
 ## Technical details
@@ -28,4 +28,4 @@ Codes style of this MVP:
 
 ## Live demo
 
-In order to play the live demo [https://ai.kyletiger.com/quickdraw-cnn](https://ai.kyletiger.com/quickdraw-cnn), you need a modern web browser (e.g. ```Chrome```, ```Safari```, or ```Wechat``` on both web and mobile devices) that supports ES6 runtime.
+In order to play the live demo [https://ai.kyletiger.com/quickdraw-cnn](https://ai.kyletiger.com/quickdraw-cnn), you need a modern web browser (e.g. ```Chrome```, ```Safari```, or ```Wechat``` on both web and mobile devices) that supports ES6 runtime. IE (or IE kernel based browsers) isn't supported!

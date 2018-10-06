@@ -209,10 +209,14 @@ function performPrediction() {
     for (let i = 0; i < topK; i++) {
       let index = indices[i];
       let p = Math.round10(probabilities[index] * 100, -2);
+      if (i === 0)
+        predictionText += '<span style="color:#ef6c00">';
       predictionText += categoryNames[index];
       predictionText += '<span style="font-size:0.26rem;">';
       predictionText += p;
       predictionText += '%匹配度</span>';
+      if (i ===0)
+        predictionText += '</span>';
 
       // If we get the most perfect matching
       if (p === 100)
