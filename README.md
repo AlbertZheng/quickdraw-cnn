@@ -27,3 +27,10 @@ Codes style of this MVP:
 ## Demo live
 
 To play the demo live [https://ai.kyletiger.com/quickdraw-cnn](https://ai.kyletiger.com/quickdraw-cnn), you need to use a modern web browser (e.g. **```Chrome```, ```Safari```, or ```Wechat``` on either web or mobile devices**) that supports ES6 runtime. **IE (or IE kernel based browsers) isn't supported!**
+
+
+## License
+
+Copyright (C) 2000-2018 Albert Zheng, 郑立松
+
+The binaries and source code of this Project can be used according to the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
