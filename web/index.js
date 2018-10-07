@@ -209,7 +209,7 @@ function performPrediction() {
       let index = indices[i];
       let p = Math.round10(probabilities[index] * 100, -2);
       if (i === 0)
-        predictionText += '<span style="color:#ef6c00">';
+        predictionText += '<span style="color:#ef6c00;font-weight:bold;">';
       predictionText += categoryNames[index];
       predictionText += '<span style="font-size:0.26rem;">';
       predictionText += p;
