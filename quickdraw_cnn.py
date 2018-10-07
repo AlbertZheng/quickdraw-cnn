@@ -24,6 +24,14 @@ or matplotlib.backends is imported for the first time.
 """
 import matplotlib.pyplot as plt
 
+"""
+device_name = tf.test.gpu_device_name()
+if device_name != '/device:GPU:0':
+    raise SystemError('*** GPU device not found ***')
+print('### Found GPU at: {} ###'.format(device_name))
+"""
+
+
 # Configure your proxy setting if you are inside GW.
 """
 # Create the object, assign it to a variable
@@ -43,13 +51,6 @@ socket.socket = socks.socksocket
 
 tf.logging.set_verbosity(tf.logging.DEBUG)
 tl.logging.set_verbosity(tl.logging.DEBUG)
-
-"""
-device_name = tf.test.gpu_device_name()
-if device_name != '/device:GPU:0':
-    raise SystemError('*** GPU device not found ***')
-print('### Found GPU at: {} ###'.format(device_name))
-"""
 
 config = tf.ConfigProto()
 # See https://www.tensorflow.org/tutorials/using_gpu#allowing_gpu_memory_growth
@@ -261,7 +262,7 @@ n_epoch = 16
 n_step_per_epoch = int(len(train_set[y]) / batch_size)
 n_step = n_epoch * n_step_per_epoch
 print_freq = 1
-checkpoint_freq = 4
+checkpoint_freq = 3
 learning_rate = 0.0001
 
 model_ckpt_file_name = os.path.join(working_directory, "checkpoint", "model-quickdraw-cnn.ckpt")
