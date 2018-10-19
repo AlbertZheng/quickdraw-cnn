@@ -192,8 +192,12 @@ function performPrediction() {
     y_output.print(true);
     console.log("Probabilities: ", probabilities);
 
+    //let tmp = [];
+    //for (let ii=0; ii<probabilities.length; ii++) { tmp.push(probabilities[ii]); }
+
     // Map the probabilities to indices
     const indices = probabilities.slice(0).sort(function (a, b) {
+    //const indices = tmp.sort(function (a, b) {
       return b - a
     }).map(function (probability) {
       for (let i = 0; i < probabilities.length; i++) {
