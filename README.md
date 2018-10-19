@@ -2,7 +2,7 @@
 
 ## Project info
 
-**This is a "You draw, AI guess" MVP (Minimum Viable Product) that can recognize the sketch drawing on web canvas using a TensorFlow.js friendly CNN model.**
+**This is a "You draw, AI guesses" MVP (Minimum Viable Product) that can recognize the sketch drawing on web canvas using a TensorFlow.js friendly CNN model.**
 
 This project utilizes [Google's "The Quick Draw" dataset](https://github.com/googlecreativelab/quickdraw-dataset). The Quick Draw dataset is a collection of **50 million drawings** across **345 categories**, and if training the network model using the full dataset, the needed computation resource of GPU will be very huge for me. So as for demonstrating how to develop a AI enabled Web App by using TensorFlow full stack, I **just sampled 10 categories and tens of thousands pictures per category** from this dataset to train the CNN model, and **achieved 94.87% accuracy** after training 25 epochs on Google colab, then published the model as a web friendly model for ```TensorFlow.js``` based Web App.
 
@@ -31,6 +31,6 @@ To play the demo live [https://ai.kyletiger.com/quickdraw-cnn](https://ai.kyleti
 
 ## License
 
-Copyright (C) 2000-2018 Albert Zheng, 郑立松
+Copyright (C) 2000-2018 Lisong Zheng, 郑立松
 
 The binaries and source code of this project can be used according to the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
