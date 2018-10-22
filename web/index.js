@@ -173,7 +173,7 @@ function eraseCanvas() {
   canvas.backgroundColor = '#ffffff';
   drawingCoordinates = [];
 
-  document.getElementById('prediction-result').innerHTML = 'AI猜您画的是：';
+  document.getElementById('prediction-result').innerHTML = 'AI guesses';
 }
 
 
