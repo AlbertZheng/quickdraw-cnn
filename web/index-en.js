@@ -125,7 +125,7 @@ async function appMain() {
   model = await tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL);
   console.log("### Model loaded. ###");
 
-  console.log("### Predicting... ###");
+  console.log("### Warming up... ###");
   const ones = tf.ones([1, 28, 28, 1]);
   model.execute(ones).print(true);
 
@@ -151,7 +151,7 @@ async function loadCategories() {
     categoryNames = data.split(/\n/);
 
     categoryNames = categoryNames.map(function (KV) {
-      return KV.substring(KV.lastIndexOf('=') + 1);
+      return KV.substring(0, KV.lastIndexOf('='));
     });
 
     let category_list = '';
@@ -160,7 +160,7 @@ async function loadCategories() {
       if (i < demoMiniCategoryNumber - 1)
         category_list += '，';
     }
-    document.getElementById('status').innerHTML = '请画出如下类别之一的图像：<b><p style="margin:0;">' + category_list + '</p></b>';
+    document.getElementById('status').innerHTML = 'Please draw an image of one of the following categories: <b><p style="margin:0;">' + category_list + '</p></b>';
   });
 }
 
@@ -173,7 +173,7 @@ function eraseCanvas() {
   canvas.backgroundColor = '#ffffff';
   drawingCoordinates = [];
 
-  document.getElementById('prediction-result').innerHTML = 'AI猜您画的是：';
+  document.getElementById('prediction-result').innerHTML = 'AI guesses';
 }
 
 
@@ -192,12 +192,8 @@ function performPrediction() {
     y_output.print(true);
     console.log("Probabilities: ", probabilities);
 
-    //let tmp = [];
-    //for (let ii=0; ii<probabilities.length; ii++) { tmp.push(probabilities[ii]); }
-
     // Map the probabilities to indices
     const indices = probabilities.slice(0).sort(function (a, b) {
-    //const indices = tmp.sort(function (a, b) {
       return b - a
     }).map(function (probability) {
       for (let i = 0; i < probabilities.length; i++) {
@@ -215,9 +211,9 @@ function performPrediction() {
       if (i === 0)
         predictionText += '<span style="color:#ef6c00;font-weight:bold;">';
       predictionText += categoryNames[index];
-      predictionText += '<span style="font-size:0.26rem;">';
+      predictionText += '<span style="font-size:0.26rem;"> ';
       predictionText += p;
-      predictionText += '%匹配度</span>';
+      predictionText += '% matching degree</span>';
       if (i ===0)
         predictionText += '</span>';
 

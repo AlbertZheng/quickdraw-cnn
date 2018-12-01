@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <title>You draw, AI guesses</title>
+    <title>你画，AI猜</title>
 
     <link rel="stylesheet" href="./styles.css">
 
@@ -24,15 +24,15 @@
 
 <header>
     <div id="header-left"></div>
-    <div id="header-middle"><b>You draw, AI guesses</b></div>
+    <div id="header-middle"><b>你画，AI猜</b></div>
     <i class="icon iconfont icon-eraser" onclick='eraseCanvas()' disabled></i>
 </header>
 
 <!-- Top -->
 <div id="description-container">
-    <p id="poc-info">"You draw, AI guesses" is a MVP can recognize the sketch drawing on web canvas using a TensorFlow.js friendly <span style="color:#ef6c00;">Convolutional Neural Network</span> model. It demonstrates how to develop an AI enabled Web App from scratch.
+    <p id="poc-info">“你画，AI猜”是一个利用<span style="color:#ef6c00;">深度学习</span>技术识别手绘图像的最小可行产品，技术演示了如何开发类似<span style="color:#ef6c00;">Google “猜画小歌”</span>的<span style="color:#ef6c00;">人工智能</span>Web App。
     </p>
-    <p id="stack-info">Technical stack: <span style="color:#ef6c00;">TensorFlow + TensorLayer + Python, TensorFlow.js + ES6 + Node.js</span></p>
+    <p id="stack-info">技术栈：<span style="color:#ef6c00;">TensorFlow + TensorLayer + Python, TensorFlow.js + JavaScript + Node.js</span></p>
 </div>
 
 <div class="controller-panels" id="controller">
@@ -44,7 +44,7 @@
 
             <div class="panel-cell panel-cell-center panel-cell-fill">
                 <div id="status" class="help-text">
-                    Downloading <b>CNN model</b>, please waiting...
+                    正在下载<b>卷积神经网络模型</b>，请稍候...
                 </div>
             </div><!-- ./panel-cell -->
 
@@ -74,7 +74,7 @@
 
             <div class="panel-cell panel-cell-center panel-cell-fill">
                 <div class="help-text">
-                    <p id="prediction-result">AI guesses: </p>
+                    <p id="prediction-result">AI猜您画的是：</p>
                 </div>
             </div><!-- ./panel-cell -->
 
