@@ -7,6 +7,11 @@
 This project utilizes [Google's "The Quick Draw" dataset](https://github.com/googlecreativelab/quickdraw-dataset). The Quick Draw dataset is a collection of **50 million drawings** across **345 categories**, and if training the network model using the full dataset, the needed computation resource of GPU will be very huge for me. So as for demonstrating how to develop a AI enabled Web App by using TensorFlow full stack, I **just sampled 10 categories and tens of thousands pictures per category** from this dataset to train the CNN model, and **achieved 94.87% accuracy** after training 25 epochs on Google colab, then published the model as a web friendly model for ```TensorFlow.js``` based Web App.
 
 
+## Demo live
+
+To play the demo live [https://ai.kyletiger.com/quickdraw-cnn](https://ai.kyletiger.com/quickdraw-cnn), you need to use a modern web browser (e.g. **```Chrome```, ```Safari```, or ```Wechat``` on either web or mobile devices**) that supports ES6 runtime. **IE (or IE kernel based browsers) isn't supported!**
+
+
 ## Technical details
 
 ### Technical stack
@@ -22,11 +27,6 @@ Codes style of this MVP:
 - More Pythonic: fully leverage the power of python.
 - Readability (over efficiency): Since it's for instruction purposes, we prefer readability over others.
 - Understandability (over everything): Understanding DL key concepts is the main goal of this code.
-
-
-## Demo live
-
-To play the demo live [https://ai.kyletiger.com/quickdraw-cnn](https://ai.kyletiger.com/quickdraw-cnn), you need to use a modern web browser (e.g. **```Chrome```, ```Safari```, or ```Wechat``` on either web or mobile devices**) that supports ES6 runtime. **IE (or IE kernel based browsers) isn't supported!**
 
 
 ## License
