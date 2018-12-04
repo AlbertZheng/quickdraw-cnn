@@ -125,7 +125,7 @@ async function appMain() {
   model = await tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL);
   console.log("### Model loaded. ###");
 
-  console.log("### Predicting... ###");
+  console.log("### Warming up... ###");
   const ones = tf.ones([1, 28, 28, 1]);
   model.execute(ones).print(true);
 
@@ -192,12 +192,8 @@ function performPrediction() {
     y_output.print(true);
     console.log("Probabilities: ", probabilities);
 
-    //let tmp = [];
-    //for (let ii=0; ii<probabilities.length; ii++) { tmp.push(probabilities[ii]); }
-
     // Map the probabilities to indices
     const indices = probabilities.slice(0).sort(function (a, b) {
-    //const indices = tmp.sort(function (a, b) {
       return b - a
     }).map(function (probability) {
       for (let i = 0; i < probabilities.length; i++) {
